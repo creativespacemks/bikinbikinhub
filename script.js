@@ -1,27 +1,14 @@
-let lastScrollY = 0;
-let scheduledAnimationFrame = false;
+function onScroll (evt) {
 
-function onScroll(evt) {
-  // Simpan posisi scroll terakhir
-  lastScrollY = window.scrollY;
+    // Store the scroll value for laterz.
+    lastScrollY = window.scrollY;
 
-  // Cegah multiple requestAnimationFrame
-  if (scheduledAnimationFrame) return;
+    // Prevent multiple rAF callbacks.
+    if (scheduledAnimationFrame)
+    return;
 
-  // Jadwalkan pembaruan animasi
-  scheduledAnimationFrame = true;
-
-  // Meminta browser melakukan pembaruan di frame berikutnya
-  requestAnimationFrame(readAndUpdatePage);
+    scheduledAnimationFrame = true;
+    requestAnimationFrame(readAndUpdatePage);
 }
 
-function readAndUpdatePage() {
-  // Lakukan pembaruan berdasarkan scroll terakhir
-  console.log('Current scroll position:', lastScrollY);
-
-  // Reset flag
-  scheduledAnimationFrame = false;
-}
-
-// Pasang event listener untuk scroll
 window.addEventListener('scroll', onScroll);
