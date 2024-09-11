@@ -11685,6 +11685,15 @@
 
 <body class="framer-body-yd7nMFDHh-framer-wH3SS">
     <script defer src="https://events.framer.com/script" data-fid="47acda924c6cbe4d89f3a472187b61e8e3050c1ed85f05a10c95ccf10da59ac2"></script>
+		<script>
+  window.addEventListener('scroll', function() {
+    var script = document.createElement('script');
+    script.src = 'https://events.framer.com/script';
+    script.async = true;
+    script.setAttribute('data-fid', '47acda924c6cbe4d89f3a472187b61e8e3050c1ed85f05a10c95ccf10da59ac2');
+    document.body.appendChild(script);
+  }, { once: true });
+</script>
     <div id="main" data-framer-hydrate-v2="{&quot;routeId&quot;:&quot;yd7nMFDHh&quot;,&quot;localeId&quot;:&quot;default&quot;,&quot;breakpoints&quot;:[{&quot;hash&quot;:&quot;hvzz3m&quot;,&quot;mediaQuery&quot;:&quot;(min-width: 1200px)&quot;},{&quot;hash&quot;:&quot;1b4lfhe&quot;,&quot;mediaQuery&quot;:&quot;(min-width: 800px) and (max-width: 1199px)&quot;},{&quot;hash&quot;:&quot;uwaxd&quot;,&quot;mediaQuery&quot;:&quot;(max-width: 799px)&quot;}]}"
         data-framer-ssr-released-at="2024-08-29T11:54:28.163Z" data-framer-page-optimized-at="2024-09-04T18:43:54.549Z">
         <div class="framer-wH3SS framer-ZYyw9 framer-pQlRi framer-19Jv2 framer-4PwVY framer-WyzHF framer-bS37P framer-aTUfC framer-W2e9I framer-N8k9p framer-shCEN framer-hvzz3m" style="min-height:100vh;width:auto">
@@ -16596,21 +16605,31 @@
     <div class="framer-wH3SS framer-ZYyw9 framer-pQlRi framer-19Jv2 framer-4PwVY framer-WyzHF framer-bS37P framer-aTUfC framer-W2e9I framer-N8k9p framer-shCEN" id="overlay"></div>
     <!--/$-->
     </div>
-    <script>
-        (() => {
-            function t() {
-                for (let e of document.querySelectorAll("[data-framer-original-sizes]")) {
-                    let i = e.getAttribute("data-framer-original-sizes");
-                    i === "" ? e.removeAttribute("sizes") : e.setAttribute("sizes", i), e.removeAttribute("data-framer-original-sizes")
-                }
-            }
+   (() => {
+    // Mendapatkan semua elemen yang memerlukan pemrosesan
+    const elements = document.querySelectorAll("[data-framer-original-sizes]");
 
-            function s() {
-                window.__framer_onRewriteBreakpoints = t
+    // Memproses setiap elemen
+    function updateSizes() {
+        elements.forEach(e => {
+            const originalSizes = e.getAttribute("data-framer-original-sizes");
+            if (originalSizes === "") {
+                e.removeAttribute("sizes");
+            } else {
+                e.setAttribute("sizes", originalSizes);
             }
-            return s
-        })()()
-    </script>
+            e.removeAttribute("data-framer-original-sizes");
+        });
+    }
+
+    // Mengatur fungsi untuk dipanggil nanti
+    function setup() {
+        window.__framer_onRewriteBreakpoints = updateSizes;
+    }
+
+    // Menjalankan setup
+    setup();
+})();
 	<script>
   window.addEventListener('scroll', function() {
     var script = document.createElement('script');
