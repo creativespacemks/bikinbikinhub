@@ -11686,6 +11686,26 @@
     document.body.appendChild(script);
   }, { once: true });
 </script>
+	<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"));
+    if ("IntersectionObserver" in window) {
+      let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            let lazyImage = entry.target;
+            lazyImage.src = lazyImage.dataset.src;
+            lazyImage.classList.remove("lazyload");
+            lazyImageObserver.unobserve(lazyImage);
+          }
+        });
+      });
+      lazyImages.forEach(function(lazyImage) {
+        lazyImageObserver.observe(lazyImage);
+      });
+    }
+  });
+</script>
     <div id="main" data-framer-hydrate-v2="{&quot;routeId&quot;:&quot;yd7nMFDHh&quot;,&quot;localeId&quot;:&quot;default&quot;,&quot;breakpoints&quot;:[{&quot;hash&quot;:&quot;hvzz3m&quot;,&quot;mediaQuery&quot;:&quot;(min-width: 1200px)&quot;},{&quot;hash&quot;:&quot;1b4lfhe&quot;,&quot;mediaQuery&quot;:&quot;(min-width: 800px) and (max-width: 1199px)&quot;},{&quot;hash&quot;:&quot;uwaxd&quot;,&quot;mediaQuery&quot;:&quot;(max-width: 799px)&quot;}]}"
         data-framer-ssr-released-at="2024-08-29T11:54:28.163Z" data-framer-page-optimized-at="2024-09-04T18:43:54.549Z">
         <div class="framer-wH3SS framer-ZYyw9 framer-pQlRi framer-19Jv2 framer-4PwVY framer-WyzHF framer-bS37P framer-aTUfC framer-W2e9I framer-N8k9p framer-shCEN framer-hvzz3m" style="min-height:100vh;width:auto">
