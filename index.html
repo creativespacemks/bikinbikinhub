@@ -16619,10 +16619,10 @@
     <!--/$-->
     </div>
    (() => {
-    // Mendapatkan semua elemen yang memerlukan pemrosesan
+    <!--Mendapatkan semua elemen yang memerlukan pemrosesan-->
     const elements = document.querySelectorAll("[data-framer-original-sizes]");
 
-    // Memproses setiap elemen
+    <!--Memproses setiap elemen-->
     function updateSizes() {
         elements.forEach(e => {
             const originalSizes = e.getAttribute("data-framer-original-sizes");
@@ -16635,12 +16635,12 @@
         });
     }
 
-    // Mengatur fungsi untuk dipanggil nanti
+    <!--Mengatur fungsi untuk dipanggil nanti-->
     function setup() {
         window.__framer_onRewriteBreakpoints = updateSizes;
     }
 
-    // Menjalankan setup
+    
     setup();
 })();
 <script src="script.js" defer></script>	
